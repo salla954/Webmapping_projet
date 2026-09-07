@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SITS Sénégal — Régions & Départements</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <img src="assets/logo.svg" alt="Logo SITS" class="logo" />
+  <div class="topbar-text">
+    <h1>Système d'Information Territorial du Sénégal <span>— SITS</span></h1>
+    <p class="topbar-sub">Module Régions &amp; Départements — consommation API</p>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <section class="panel">
+      <h2>Rechercher</h2>
+
+      <label for="region-select">Région</label>
+      <select id="region-select">
+        <option value="">— Toutes les régions —</option>
+      </select>
+
+      <label for="dept-select">Département</label>
+      <select id="dept-select">
+        <option value="">— Sélectionnez une région —</option>
+      </select>
+
+      <button id="reset-btn" type="button">Réinitialiser la vue</button>
+    </section>
+
+    <section class="panel" id="info-panel">
+      <h2>Informations</h2>
+      <p class="placeholder">Cliquez sur une région ou un département sur la carte, ou utilisez les listes ci-dessus.</p>
+    </section>
+
+    <section class="panel" id="legend-panel">
+      <h2>Légende</h2>
+      <ul class="legend-list">
+        <li><span class="swatch swatch-region"></span> Régions</li>
+        <li><span class="swatch swatch-dept"></span> Départements</li>
+        <li><span class="swatch swatch-active"></span> Sélection active</li>
+      </ul>
+    </section>
+
+    <section class="panel" id="status-panel">
+      <h2>État des données</h2>
+      <p id="status-text" class="status">Chargement…</p>
+    </section>
+
+  </aside>
+
+  <main class="map-wrap">
+    <div id="map"></div>
+  </main>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
