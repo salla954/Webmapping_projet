@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SITS — Statistiques territoriales</title>
+<meta name="description" content="Chiffres clés, répartition des infrastructures publiques et données territoriales du Sénégal par région et département.">
+
+<script>
+  (function () {
+    var saved = localStorage.getItem("sits-theme");
+    var theme = saved === "light" || saved === "dark" ? saved : "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/accueil.css" />
+<link rel="stylesheet" href="css/statistiques.css" />
+</head>
+<body class="accueil statistiques">
+
+<div class="bg-blobs" aria-hidden="true">
+  <span class="b1"></span>
+  <span class="b2"></span>
+  <span class="b3"></span>
+</div>
+
+<nav class="site-nav">
+  <a class="brand" href="accueil.html">
+    <img src="assets/logo.svg" alt="Logo SITS" />
+    <span>SITS <em>Sénégal</em></span>
+  </a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="accueil.html">Accueil</a></li>
+      <li><a href="index.html">Carte</a></li>
+      <li><a href="statistiques.html" class="active">Statistiques</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Basculer entre thème clair et sombre" title="Changer de thème">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="4.5"></line>
+          <line x1="12" y1="19.5" x2="12" y2="22"></line>
+          <line x1="4.2" y1="4.2" x2="5.9" y2="5.9"></line>
+          <line x1="18.1" y1="18.1" x2="19.8" y2="19.8"></line>
+          <line x1="2" y1="12" x2="4.5" y2="12"></line>
+          <line x1="19.5" y1="12" x2="22" y2="12"></line>
+          <line x1="4.2" y1="19.8" x2="5.9" y2="18.1"></line>
+          <line x1="18.1" y1="5.9" x2="19.8" y2="4.2"></line>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="stats-header reveal" data-group="stats-head">
+  <h1>Statistiques territoriales</h1>
+  <p>
+    Chiffres clés, répartition des infrastructures publiques et données
+    territoriales du Sénégal, calculés à partir des jeux de données
+    régions, départements, communautés rurales et infrastructures du SITS.
+  </p>
+</header>
+
+<section class="stat-strip" id="key-stats">
+  <div class="stat glass reveal" data-group="key-stats">
+    <p class="placeholder">Chargement des chiffres clés…</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Répartition des infrastructures par type</h2>
+  <div class="breakdown-card glass reveal" data-group="breakdown" id="infra-breakdown">
+    <div class="breakdown" id="infra-breakdown-list">
+      <p class="placeholder">Chargement…</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Infrastructures par région</h2>
+  <div class="chart-card glass reveal" data-group="chart">
+    <div class="chart-controls">
+      <label for="infra-type-filter">Type d'infrastructure</label>
+      <select id="infra-type-filter">
+        <option value="">Toutes les infrastructures</option>
+      </select>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="infra-region-chart" height="380" aria-label="Nombre d'infrastructures par région" role="img"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Le territoire par région</h2>
+  <div class="table-card glass reveal" data-group="table">
+    <table class="stats-table" id="region-table">
+      <thead>
+        <tr>
+          <th>Région</th>
+          <th>Superficie</th>
+          <th>Départements</th>
+          <th>Communautés rurales</th>
+        </tr>
+      </thead>
+      <tbody id="region-table-body">
+        <tr><td colspan="4" class="placeholder">Chargement…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p style="color: var(--text-dim); font-size: 0.85rem; margin: 0 0 16px;">
+    Projet académique — Système d'Information Territorial du Sénégal
+  </p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js"></script>
+<script src="js/statistiques.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>

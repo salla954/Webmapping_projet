@@ -1,0 +1,300 @@
+/* =========================================================================
+   Page d'accueil — glassmorphism + cartes + animations au scroll.
+   Le reste des tokens de couleur vient de css/style.css (partagé).
+   ========================================================================= */
+
+body.accueil {
+  height: auto;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ---------------------------------------------------------------------
+   Fond : quelques taches de couleur floutées, fixes, derrière tout le
+   contenu. C'est ce qui donne au verre dépoli quelque chose à flouter —
+   sans ça, un backdrop-filter sur un fond plat ne se voit pas.
+   ------------------------------------------------------------------- */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-blobs span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+.bg-blobs .b1 { width: 480px; height: 480px; top: -140px; left: -100px; background: #14b8a6; opacity: calc(0.35 * var(--blob-op)); }
+.bg-blobs .b2 { width: 420px; height: 420px; top: 220px; right: -140px; background: #f59e0b; opacity: calc(0.22 * var(--blob-op)); }
+.bg-blobs .b3 { width: 380px; height: 380px; bottom: -160px; left: 30%; background: #14b8a6; opacity: calc(0.18 * var(--blob-op)); }
+
+.site-nav, .hero, .stat-strip, .section, .site-footer {
+  position: relative;
+  z-index: 1;
+}
+.site-nav { background: var(--nav-bg); backdrop-filter: blur(14px); }
+
+/* ---------------------------------------------------------------------
+   Carte de verre — composant de base réutilisé partout sur la page
+   ------------------------------------------------------------------- */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px var(--glass-shadow);
+}
+
+/* ---------------------------------------------------------------------
+   Animation d'apparition au scroll — un seul système, réutilisé, avec
+   décalage progressif entre les éléments d'un même groupe.
+   ------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .hero-visual .dot {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 84px 28px 64px;
+}
+
+.hero-copy h1 {
+  margin: 0 0 18px;
+  font-family: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+
+.hero-copy p {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 46ch;
+  margin: 0 0 32px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+.btn-primary { background: var(--teal); color: var(--ink); }
+.btn-primary:hover { background: #0fa896; transform: translateY(-1px); }
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--text);
+  border: 1px solid var(--btn-secondary-border);
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+
+/* Panneau de verre qui accueille le visuel (semis de points en attendant
+   le SVG du Sénégal, ou la carte réelle une fois fournie) */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+.hero-visual svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+}
+
+/* Contour réel des 14 régions — recoloré pour le thème sombre, avec un
+   léger survol par région (écho de la vraie carte interactive). */
+#senegal-map path {
+  fill: rgba(20, 184, 166, 0.14);
+  stroke: var(--map-stroke);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  transition: fill 0.2s ease;
+}
+#senegal-map path:hover { fill: rgba(20, 184, 166, 0.4); }
+
+#senegal-map .region-dot {
+  r: 6px;
+  fill: #f59e0b;
+  stroke: rgba(11, 18, 32, 0.6);
+  stroke-width: 1;
+  animation: dot-in 0.5s ease-out backwards;
+}
+#senegal-map .region-dot:nth-of-type(4n+1) { fill: #14b8a6; }
+
+@keyframes dot-in {
+  from { opacity: 0; transform: scale(0.2); transform-origin: center; }
+  to { opacity: 1; transform: scale(1); transform-origin: center; }
+}
+#senegal-map .region-dot:nth-of-type(1) { animation-delay: 0.05s; }
+#senegal-map .region-dot:nth-of-type(2) { animation-delay: 0.1s; }
+#senegal-map .region-dot:nth-of-type(3) { animation-delay: 0.15s; }
+#senegal-map .region-dot:nth-of-type(4) { animation-delay: 0.2s; }
+#senegal-map .region-dot:nth-of-type(5) { animation-delay: 0.25s; }
+#senegal-map .region-dot:nth-of-type(6) { animation-delay: 0.3s; }
+#senegal-map .region-dot:nth-of-type(7) { animation-delay: 0.35s; }
+#senegal-map .region-dot:nth-of-type(8) { animation-delay: 0.4s; }
+#senegal-map .region-dot:nth-of-type(9) { animation-delay: 0.45s; }
+#senegal-map .region-dot:nth-of-type(10) { animation-delay: 0.5s; }
+#senegal-map .region-dot:nth-of-type(11) { animation-delay: 0.55s; }
+#senegal-map .region-dot:nth-of-type(12) { animation-delay: 0.6s; }
+#senegal-map .region-dot:nth-of-type(13) { animation-delay: 0.65s; }
+#senegal-map .region-dot:nth-of-type(14) { animation-delay: 0.7s; }
+
+/* ---------------------------------------------------------------------
+   Chiffres clés — cartes de verre en grille
+   ------------------------------------------------------------------- */
+.stat-strip {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.stat-strip .stat {
+  padding: 24px 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-strip .stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.38);
+}
+.stat-strip .stat .num {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-strip .stat .label {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 780px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero-visual { order: -1; max-width: 300px; margin: 0 auto; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------------------------------------------------------------------
+   Comment ça marche — vraie séquence à 3 étapes, cartes de verre
+   ------------------------------------------------------------------- */
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px 64px;
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 28px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.step {
+  padding: 24px;
+  transition: transform 0.2s ease;
+}
+.step:hover { transform: translateY(-3px); }
+.step .step-num {
+  font-size: 0.8rem;
+  color: var(--teal);
+  font-weight: 600;
+}
+.step h3 {
+  margin: 8px 0 8px;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+.step p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 780px) {
+  .steps { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------------
+   Répartition des infrastructures — une carte de verre, liste à barres
+   ------------------------------------------------------------------- */
+.breakdown-card { padding: 28px 32px; max-width: 680px; }
+.breakdown { display: flex; flex-direction: column; gap: 14px; }
+.breakdown-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 56px;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.85rem;
+}
+.breakdown-row .bar-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.breakdown-row .bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+  border-radius: 4px;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.breakdown-card.in-view .bar-fill { transform: scaleX(1); }
+.breakdown-row .count { text-align: right; color: var(--text-dim); }
+
+footer.site-footer {
+  border-top: 1px solid var(--panel-line);
+  padding: 32px 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+footer.site-footer .team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+footer.site-footer .team strong { color: var(--text); font-weight: 500; }

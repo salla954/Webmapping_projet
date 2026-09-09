@@ -1,0 +1,426 @@
+{
+  "generated_from": "regions.geojson, departements.geojson, communes_rurales.geojson (agrégats pré-calculés, sans géométrie)",
+  "totaux": {
+    "nb_regions": 14,
+    "nb_departements": 45,
+    "nb_communes_rurales": 415,
+    "superficie_totale_km2": 197022.7
+  },
+  "regions": [
+    {
+      "nom": "Dakar",
+      "code": 1,
+      "superficie_km2": 547.1,
+      "nb_departements": 4,
+      "nb_communes_rurales": 2
+    },
+    {
+      "nom": "Diourbel",
+      "code": 2,
+      "superficie_km2": 4824.1,
+      "nb_departements": 3,
+      "nb_communes_rurales": 36
+    },
+    {
+      "nom": "Fatick",
+      "code": 3,
+      "superficie_km2": 6848.9,
+      "nb_departements": 3,
+      "nb_communes_rurales": 27
+    },
+    {
+      "nom": "Kaffrine",
+      "code": 4,
+      "superficie_km2": 11263.2,
+      "nb_departements": 4,
+      "nb_communes_rurales": 25
+    },
+    {
+      "nom": "Kaolack",
+      "code": 6,
+      "superficie_km2": 5356.8,
+      "nb_departements": 3,
+      "nb_communes_rurales": 16
+    },
+    {
+      "nom": "Kolda",
+      "code": 7,
+      "superficie_km2": 13771.3,
+      "nb_departements": 3,
+      "nb_communes_rurales": 31
+    },
+    {
+      "nom": "Kédougou",
+      "code": 5,
+      "superficie_km2": 16910.7,
+      "nb_departements": 3,
+      "nb_communes_rurales": 29
+    },
+    {
+      "nom": "Louga",
+      "code": 8,
+      "superficie_km2": 24888.8,
+      "nb_departements": 3,
+      "nb_communes_rurales": 47
+    },
+    {
+      "nom": "Matam",
+      "code": 9,
+      "superficie_km2": 29444.5,
+      "nb_departements": 3,
+      "nb_communes_rurales": 14
+    },
+    {
+      "nom": "Saint-Louis",
+      "code": 10,
+      "superficie_km2": 19240.8,
+      "nb_departements": 3,
+      "nb_communes_rurales": 18
+    },
+    {
+      "nom": "Sedhiou",
+      "code": 11,
+      "superficie_km2": 7341.2,
+      "nb_departements": 3,
+      "nb_communes_rurales": 32
+    },
+    {
+      "nom": "Tambacounda",
+      "code": 12,
+      "superficie_km2": 42563.7,
+      "nb_departements": 4,
+      "nb_communes_rurales": 38
+    },
+    {
+      "nom": "Thiès",
+      "code": 13,
+      "superficie_km2": 6669.9,
+      "nb_departements": 3,
+      "nb_communes_rurales": 31
+    },
+    {
+      "nom": "Ziguinchor",
+      "code": 14,
+      "superficie_km2": 7351.7,
+      "nb_departements": 3,
+      "nb_communes_rurales": 25
+    }
+  ],
+  "departements": [
+    {
+      "nom": "Bakel",
+      "code": 121,
+      "region_nom": "Tambacounda",
+      "region_code": 12,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Bambey",
+      "code": 21,
+      "region_nom": "Diourbel",
+      "region_code": 2,
+      "nb_communes_rurales": 11
+    },
+    {
+      "nom": "Bignona",
+      "code": 141,
+      "region_nom": "Ziguinchor",
+      "region_code": 14,
+      "nb_communes_rurales": 16
+    },
+    {
+      "nom": "Birkelane",
+      "code": 41,
+      "region_nom": "Kaffrine",
+      "region_code": 4,
+      "nb_communes_rurales": 4
+    },
+    {
+      "nom": "Bounkiling",
+      "code": 111,
+      "region_nom": "Sedhiou",
+      "region_code": 11,
+      "nb_communes_rurales": 10
+    },
+    {
+      "nom": "Dagana",
+      "code": 101,
+      "region_nom": "Saint-Louis",
+      "region_code": 10,
+      "nb_communes_rurales": 5
+    },
+    {
+      "nom": "Dakar",
+      "code": 11,
+      "region_nom": "Dakar",
+      "region_code": 1,
+      "nb_communes_rurales": 0
+    },
+    {
+      "nom": "Diourbel",
+      "code": 22,
+      "region_nom": "Diourbel",
+      "region_code": 2,
+      "nb_communes_rurales": 10
+    },
+    {
+      "nom": "Fatick",
+      "code": 31,
+      "region_nom": "Fatick",
+      "region_code": 3,
+      "nb_communes_rurales": 15
+    },
+    {
+      "nom": "Foundiougne",
+      "code": 32,
+      "region_nom": "Fatick",
+      "region_code": 3,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Gossas",
+      "code": 33,
+      "region_nom": "Fatick",
+      "region_code": 3,
+      "nb_communes_rurales": 3
+    },
+    {
+      "nom": "Goudiry",
+      "code": 122,
+      "region_nom": "Tambacounda",
+      "region_code": 12,
+      "nb_communes_rurales": 13
+    },
+    {
+      "nom": "Goudomp",
+      "code": 112,
+      "region_nom": "Sedhiou",
+      "region_code": 11,
+      "nb_communes_rurales": 11
+    },
+    {
+      "nom": "Guediawaye",
+      "code": 12,
+      "region_nom": "Dakar",
+      "region_code": 1,
+      "nb_communes_rurales": 0
+    },
+    {
+      "nom": "Guinguineo",
+      "code": 51,
+      "region_nom": "Kédougou",
+      "region_code": 5,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Kaffrine",
+      "code": 42,
+      "region_nom": "Kaffrine",
+      "region_code": 4,
+      "nb_communes_rurales": 4
+    },
+    {
+      "nom": "Kanel",
+      "code": 91,
+      "region_nom": "Matam",
+      "region_code": 9,
+      "nb_communes_rurales": 5
+    },
+    {
+      "nom": "Kaolack",
+      "code": 52,
+      "region_nom": "Kédougou",
+      "region_code": 5,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Kebemer",
+      "code": 81,
+      "region_nom": "Louga",
+      "region_code": 8,
+      "nb_communes_rurales": 17
+    },
+    {
+      "nom": "Kedougou",
+      "code": 61,
+      "region_nom": "Kaolack",
+      "region_code": 6,
+      "nb_communes_rurales": 6
+    },
+    {
+      "nom": "Kolda",
+      "code": 71,
+      "region_nom": "Kolda",
+      "region_code": 7,
+      "nb_communes_rurales": 11
+    },
+    {
+      "nom": "Koungueul",
+      "code": 43,
+      "region_nom": "Kaffrine",
+      "region_code": 4,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Koupentoump",
+      "code": 123,
+      "region_nom": "Tambacounda",
+      "region_code": 12,
+      "nb_communes_rurales": 8
+    },
+    {
+      "nom": "Linguere",
+      "code": 82,
+      "region_nom": "Louga",
+      "region_code": 8,
+      "nb_communes_rurales": 15
+    },
+    {
+      "nom": "Louga",
+      "code": 83,
+      "region_nom": "Louga",
+      "region_code": 8,
+      "nb_communes_rurales": 15
+    },
+    {
+      "nom": "Maleme hodar",
+      "code": 44,
+      "region_nom": "Kaffrine",
+      "region_code": 4,
+      "nb_communes_rurales": 8
+    },
+    {
+      "nom": "Matam",
+      "code": 92,
+      "region_nom": "Matam",
+      "region_code": 9,
+      "nb_communes_rurales": 6
+    },
+    {
+      "nom": "Mbacke",
+      "code": 23,
+      "region_nom": "Diourbel",
+      "region_code": 2,
+      "nb_communes_rurales": 15
+    },
+    {
+      "nom": "Mbour",
+      "code": 131,
+      "region_nom": "Thiès",
+      "region_code": 13,
+      "nb_communes_rurales": 8
+    },
+    {
+      "nom": "Medina Yoro Foula",
+      "code": 72,
+      "region_nom": "Kolda",
+      "region_code": 7,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Nioro du rip",
+      "code": 53,
+      "region_nom": "Kédougou",
+      "region_code": 5,
+      "nb_communes_rurales": 11
+    },
+    {
+      "nom": "Oussouye",
+      "code": 142,
+      "region_nom": "Ziguinchor",
+      "region_code": 14,
+      "nb_communes_rurales": 4
+    },
+    {
+      "nom": "Pikine",
+      "code": 13,
+      "region_nom": "Dakar",
+      "region_code": 1,
+      "nb_communes_rurales": 0
+    },
+    {
+      "nom": "Podor",
+      "code": 102,
+      "region_nom": "Saint-Louis",
+      "region_code": 10,
+      "nb_communes_rurales": 10
+    },
+    {
+      "nom": "Ranerou",
+      "code": 93,
+      "region_nom": "Matam",
+      "region_code": 9,
+      "nb_communes_rurales": 3
+    },
+    {
+      "nom": "Rufisque",
+      "code": 14,
+      "region_nom": "Dakar",
+      "region_code": 1,
+      "nb_communes_rurales": 2
+    },
+    {
+      "nom": "Saint louis",
+      "code": 103,
+      "region_nom": "Saint-Louis",
+      "region_code": 10,
+      "nb_communes_rurales": 3
+    },
+    {
+      "nom": "Salemata",
+      "code": 62,
+      "region_nom": "Kaolack",
+      "region_code": 6,
+      "nb_communes_rurales": 5
+    },
+    {
+      "nom": "Saraya",
+      "code": 63,
+      "region_nom": "Kaolack",
+      "region_code": 6,
+      "nb_communes_rurales": 5
+    },
+    {
+      "nom": "Sedhiou",
+      "code": 113,
+      "region_nom": "Sedhiou",
+      "region_code": 11,
+      "nb_communes_rurales": 11
+    },
+    {
+      "nom": "Tambacounda",
+      "code": 124,
+      "region_nom": "Tambacounda",
+      "region_code": 12,
+      "nb_communes_rurales": 8
+    },
+    {
+      "nom": "Thies",
+      "code": 132,
+      "region_nom": "Thiès",
+      "region_code": 13,
+      "nb_communes_rurales": 9
+    },
+    {
+      "nom": "Tivaoune",
+      "code": 133,
+      "region_nom": "Thiès",
+      "region_code": 13,
+      "nb_communes_rurales": 14
+    },
+    {
+      "nom": "Velingara",
+      "code": 73,
+      "region_nom": "Kolda",
+      "region_code": 7,
+      "nb_communes_rurales": 11
+    },
+    {
+      "nom": "Ziguinchor",
+      "code": 143,
+      "region_nom": "Ziguinchor",
+      "region_code": 14,
+      "nb_communes_rurales": 5
+    }
+  ]
+}

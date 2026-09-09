@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SITS Sénégal — Régions & Départements</title>
+
+<script>
+  (function () {
+    var saved = localStorage.getItem("sits-theme");
+    var theme = saved === "light" || saved === "dark" ? saved : "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="accueil.html">
+    <img src="assets/logo.svg" alt="Logo SITS" />
+    <span>SITS <em>Sénégal</em></span>
+  </a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="accueil.html">Accueil</a></li>
+      <li><a href="index.html" class="active">Carte</a></li>
+      <li><a href="statistiques.html">Statistiques</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="toggle-table-btn" class="nav-table-btn" type="button" aria-expanded="false">
+        Tableau des données
+      </button>
+      <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Basculer entre thème clair et sombre" title="Changer de thème">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="4.5"></line>
+          <line x1="12" y1="19.5" x2="12" y2="22"></line>
+          <line x1="4.2" y1="4.2" x2="5.9" y2="5.9"></line>
+          <line x1="18.1" y1="18.1" x2="19.8" y2="19.8"></line>
+          <line x1="2" y1="12" x2="4.5" y2="12"></line>
+          <line x1="19.5" y1="12" x2="22" y2="12"></line>
+          <line x1="4.2" y1="19.8" x2="5.9" y2="18.1"></line>
+          <line x1="18.1" y1="5.9" x2="19.8" y2="4.2"></line>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <section class="panel">
+      <h2>Rechercher</h2>
+
+      <label for="region-select">Région</label>
+      <select id="region-select">
+        <option value="">— Toutes les régions —</option>
+      </select>
+
+      <label for="dept-select">Département</label>
+      <select id="dept-select">
+        <option value="">— Sélectionnez une région —</option>
+      </select>
+
+      <label for="commune-select">Communauté rurale</label>
+      <select id="commune-select" disabled>
+        <option value="">— Sélectionnez un département —</option>
+      </select>
+
+      <button id="reset-btn" type="button">Réinitialiser la vue</button>
+    </section>
+
+    <section class="panel" id="info-panel">
+      <h2>Informations</h2>
+      <p class="placeholder">Cliquez sur une région ou un département sur la carte, ou utilisez les listes ci-dessus.</p>
+    </section>
+
+    <section class="panel" id="legend-panel">
+      <h2>Légende</h2>
+      <ul class="legend-list">
+        <li><span class="swatch swatch-region"></span> Régions</li>
+        <li><span class="swatch swatch-dept"></span> Départements</li>
+        <li><span class="swatch swatch-active"></span> Sélection active</li>
+      </ul>
+    </section>
+
+    <section class="panel" id="status-panel">
+      <h2>État des données</h2>
+      <p id="status-text" class="status">Chargement…</p>
+    </section>
+
+  </aside>
+
+  <main class="map-wrap">
+    <div id="map"></div>
+
+    <section id="table-drawer" class="table-drawer" aria-hidden="true">
+      <div class="table-drawer-header">
+        <div>
+          <h2 id="table-title">Régions du Sénégal</h2>
+          <p id="table-subtitle" class="table-subtitle">14 entités</p>
+        </div>
+        <button id="close-table-btn" type="button" aria-label="Fermer le tableau">✕</button>
+      </div>
+      <div class="table-drawer-body">
+        <table id="data-table">
+          <thead id="table-head"></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+        <p id="table-empty" class="placeholder" hidden>Aucune donnée à afficher pour cette sélection.</p>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/territoire.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
